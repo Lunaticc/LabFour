@@ -5,6 +5,7 @@ import Training.Enums.WebState;
 public class WebCostumer extends Costumer{
     private String uniqueUserName;
     private WebState state;
+
     public WebCostumer(String name, int age, String email, String number, String uniqueUserName) {
         super(name, age, email, number);
         this.uniqueUserName = uniqueUserName;
@@ -12,7 +13,10 @@ public class WebCostumer extends Costumer{
     }
 
 
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     /////GETTERS AND SETTERS/////
     public String getUniqueUserName() {

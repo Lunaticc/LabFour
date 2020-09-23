@@ -2,7 +2,7 @@ package Training.Costumers;
 
 import Training.Accounts.Account;
 
-public class Costumer {
+public class Costumer{
     private String name;
     private static int id = 0;
     private final String uniqueID;
@@ -16,7 +16,7 @@ public class Costumer {
     public Costumer(String name, int age, String email, String number) {
 
         uniqueID = name.charAt(0) +""+ name.charAt(1)+ "" + ++id;
-        this.account = new Account(getUniqueID());
+        this.account = new Account(getUniqueID(), this);
         this.name = name;
         this.age = age;
         this.email = email;
@@ -25,7 +25,7 @@ public class Costumer {
 
     public Costumer(Costumer costumer) {
 
-        uniqueID = costumer.name.charAt(0) +""+ costumer.name.charAt(1) + ++id;
+        uniqueID = costumer.uniqueID;
         this.account = costumer.account;
         this.name = costumer.name;
         this.age = costumer.age;
@@ -34,24 +34,31 @@ public class Costumer {
     }
 
 
+    public WebCostumer signUp(String userName){
+        return new WebCostumer(name, age, email, number, userName);
+    }
 
-    /////TOSTRING/////
+    /////toString/////
 
     @Override
     public String toString() {
         return "Costumer{" +
-                "name='" + name + '\'' +
-                ", uniqueID='" + uniqueID + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", number='" + number + '\'' +
-                ", account=" + account +
+                "name = '" + name + '\'' +
+                ", uniqueID = '" + uniqueID + '\'' +
+                ", age = " + age +
+                ", email = '" + email + '\'' +
+                ", number = '" + number + '\'' +
+                ", account = " + account +
                 '}';
     }
 
 
     /////GETTERS AND SETTERS/////
 
+
+    public Account getAccount() {
+        return account;
+    }
 
     public String getUniqueID() {
         return uniqueID;
